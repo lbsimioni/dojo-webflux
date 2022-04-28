@@ -1,15 +1,15 @@
 package br.com.dojo.webflux.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Data
+@Builder(toBuilder = true)
 public class Course {
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
     private String name;
     private String duration;
