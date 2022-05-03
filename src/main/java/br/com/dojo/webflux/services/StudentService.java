@@ -31,6 +31,6 @@ public class StudentService {
     }
 
     public Flux<Student> findAll() {
-        return this.findAll();
+        return this.studentRepository.findAll();
     }
 }
