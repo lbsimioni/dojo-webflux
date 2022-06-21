@@ -1,5 +1,6 @@
 package br.com.dojo.webflux.services;
 
+import br.com.dojo.webflux.exceptions.StudentNotFoundException;
 import br.com.dojo.webflux.models.Student;
 import br.com.dojo.webflux.repositories.StudentRepository;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,8 @@ public class StudentService {
     }
 
     public Mono<Student> findById(final Long id) {
-        return this.studentRepository.findById(id);
+        return this.studentRepository.findById(id)
+                .switchIfEmpty(Mono.error(StudentNotFoundException::new));
     }
 
     public Flux<Student> findAll() {
